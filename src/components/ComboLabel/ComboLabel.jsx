@@ -1,16 +1,22 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { tabela } from "../../constants";
 import NpcContext from "../../contexts/npcContext";
 
 const ComboLabel = (props) => {
   const { nd } = useContext(NpcContext);
-  const valor = useRef(nd);
+  const [valor, setValor] = useState(nd);
 
   const incrementar = () => {
-    valor.current++;
+    if (valor === 20) {
+      return;
+    }
+    setValor(valor + 1);
   };
   const decrementar = () => {
-    valor.current--;
+    if (valor === 0) {
+      return;
+    }
+    setValor(valor - 1);
   };
 
   return (
@@ -18,7 +24,7 @@ const ComboLabel = (props) => {
       <span>{props.name}: </span>
       <div className="ComboLabel-Combo">
         <button onClick={decrementar}>&lt;</button>
-        <span>{tabela[nd][valor.current]}</span>
+        <span>{tabela[valor][props.n]}</span>
         <button onClick={incrementar}>&gt;</button>
       </div>
     </div>

@@ -1,4 +1,41 @@
 .App {
-  text-align: center;
+  --red: rgb(150, 0, 0);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(192, 192, 162);
 }
 
+.Npc-Creator {
+  border: var(--red) solid 3px;
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.Npc-Info {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--red) solid 2px;
+  padding: 0px 0px 10px;
+  font-size: 1.4rem;
+}
+
+.Npc-Img {
+  border-bottom: var(--red) solid 2px;
+  padding: 10px 0px 10px;
+  min-height: 0px;
+}
+
+.Npc-Img img {
+  min-height: 0px;
+}
+
+.Npc-Attributes {
+  border-bottom: var(--red) solid 2px;
+  padding: 10px 0px 10px;
+}
+
+.Npc-Combat {
+  padding: 10px 0px 10px;
+}
