@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { tabela } from "../../constants";
 import NpcContext from "../../contexts/npcContext";
 
@@ -21,7 +21,7 @@ const ComboLabel = (props) => {
 
   return (
     <div className="ComboLabel">
-      <span>{props.name}: </span>
+      <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
       <div className="ComboLabel-Combo">
         <button onClick={decrementar}>&lt;</button>
         <span>{tabela[valor][props.n]}</span>

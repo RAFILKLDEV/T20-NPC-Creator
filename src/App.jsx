@@ -15,7 +15,7 @@ function App() {
         <div className="Npc-Creator">
           <Info />
           <Image />
-          <Attribute nd={nd} />
+          <Attribute nd={nd} setNd={setNd} />
           <Combat />
         </div>
       </NpcContext.Provider>

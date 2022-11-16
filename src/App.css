@@ -36,6 +36,32 @@
   padding: 10px 0px 10px;
 }
 
+.Npc-Attributes-Stats {
+  display: flex;
+  gap: 5px;
+}
+
 .Npc-Combat {
   padding: 10px 0px 10px;
+}
+
+.ComboLabel {
+  display: flex;
+}
+
+.ComboLabel-Label {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.ComboLabel-Combo button {
+  display: none;
+}
+
+.ComboLabel:hover .ComboLabel-Combo button {
+  background-color: inherit;
+  border: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  font-size: 1.2rem;
 }
