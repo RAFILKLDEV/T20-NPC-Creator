@@ -5,20 +5,78 @@
   align-items: center;
   justify-content: center;
   background-color: rgb(192, 192, 162);
+  gap: 100px;
 }
 
-.Npc-Creator {
+.Npc-Creator,
+.Npc-Helper {
   border: var(--red) solid 3px;
   padding: 20px;
   font-size: 1.2rem;
 }
 
+.Npc-Helper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Npc-Helper-Title {
+  font-weight: 600;
+  height: auto;
+  font-size: 1.1em;
+}
+
+.Npc-Helper-Pericias {
+  display: none;
+  position: absolute;
+  gap: 5px;
+  top: calc(50vh - (500px / 2));
+  left: calc(50vw - (500px / 2));
+  width: 500px;
+  height: 500px;
+}
+
+.Npc-Helper-List {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 500px;
+  background-color: antiquewhite;
+}
+
 .Npc-Info {
   display: flex;
   justify-content: space-between;
-  border-bottom: var(--red) solid 2px;
-  padding: 0px 0px 10px;
+}
+
+.Npc-Name {
   font-size: 1.4rem;
+  font-weight: 600;
+  background-color: inherit;
+  border: none;
+}
+
+.Npc-Nd {
+  width: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.Npc-Nd:hover {
+  width: auto;
+}
+
+.Npc-Nd:hover button {
+  display: inline-flex;
+  font-size: 1.4rem;
+}
+
+.Npc-Info button {
+  background-color: inherit;
+  border: inherit;
+  font-weight: 600;
+  display: none;
+  font-size: 1.2rem;
 }
 
 .Npc-Img {
