@@ -27,6 +27,25 @@
   font-size: 1.1em;
 }
 
+.Npc-Helper-Image {
+  display: none;
+  position: absolute;
+  gap: 5px;
+  top: calc(50vh - (250px / 2));
+  left: calc(50vw - (500px / 2));
+  width: 500px;
+  padding: 25px;
+}
+
+.Npc-Helper-ImageBox {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: beige;
+  padding: 25px;
+  gap: 25px;
+}
+
 .Npc-Helper-Pericias {
   display: none;
   position: absolute;

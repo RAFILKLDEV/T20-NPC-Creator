@@ -6,18 +6,20 @@ const Pericias = (props) => {
   const trained = () => {
     const values = [...props.pericias];
 
-    values[values.findIndex((e) => e.name == props.name)].trained =
-      !values[values.findIndex((e) => e.name == props.name)].trained;
+    values[values.findIndex((e) => e.name === props.name)].trained =
+      !values[values.findIndex((e) => e.name === props.name)].trained;
 
     return props.setPericias(values);
   };
 
   return (
-    <div style={{
+    <div
+      style={{
         display: "flex",
         justifyContent: "space-between",
-        padding: 10
-    }}>
+        padding: 10,
+      }}
+    >
       <span style={{}}>{props.name}</span>
       <input onChange={trained} ref={input} type="checkbox" />
     </div>

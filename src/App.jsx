@@ -39,7 +39,11 @@ function App() {
     { name: "Vontade", trained: false },
   ]);
 
+  const [image, setImage] = useState("");
+
   const tabPericias = useRef();
+  const tabImageBox = useRef();
+  const tabImage = useRef();
 
   return (
     <div className="App">
@@ -47,15 +51,42 @@ function App() {
         <div className="Npc-Helper">
           <div>
             <div className="Npc-Helper-Title">Imagem</div>
-            <button>Adicionar Foto</button>
-            <button>Remover Foto</button>
-            <div className="Npc-Helper-Image">
+            <button
+              onClick={() => {
+                tabImageBox.current.style.display = "block";
+                tabImage.current.value = ""
+              }}
+            >
+              Adicionar Foto
+            </button>
+            <button
+              onClick={() => {
+                setImage("");
+              }}
+            >
+              Remover Foto
+            </button>
+            <div ref={tabImageBox} className="Npc-Helper-Image">
               <button
-                onClick={() => (tabPericias.current.style.display = "none")}
+                onClick={() => (tabImageBox.current.style.display = "none")}
               >
                 Fechar
               </button>
-              <input type="text" placeholder="https://imagem.png" />
+              <div className="Npc-Helper-ImageBox">
+                <input
+                  ref={tabImage}
+                  type="text"
+                  placeholder="https://imagem.png"
+                />
+                <button
+                  onClick={() => {
+                    setImage(tabImage.current.value);
+                    tabImageBox.current.style.display = "none";
+                  }}
+                >
+                  Confirmar
+                </button>
+              </div>
             </div>
           </div>
           <div>
@@ -96,7 +127,7 @@ function App() {
 
         <div className="Npc-Creator">
           <Info nd={nd} setNd={setNd} />
-          <Image />
+          <Image image={image} />
           <Attribute pericias={pericias} setPericias={setPericias} nd={nd} />
           <Combat />
         </div>

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
 
 const Attribute = (props) => {
-  const [kek, setKek] = useState([1, 2, 3, 4]);
-
   return (
     <div className="Npc-Attributes">
       {/* 0 ND 1 ATK 2 NATK 3 DMG 4 DEF 5 HP 6 PERT 7 PER 8 CD */}
@@ -26,6 +24,7 @@ const Attribute = (props) => {
             </div>
           );
         }
+        return "";
       })}
       <div>Deslocamento, Tipo de Deslocamento</div>
     </div>
