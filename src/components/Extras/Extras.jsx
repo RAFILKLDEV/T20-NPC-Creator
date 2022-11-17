@@ -25,7 +25,7 @@ const Extras = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <span>{props.name}</span>
+        <span className="ComboLabel-Label">{props.name}</span>
         <input onChange={marked} ref={inputCheckBox} checked={checked()} type="checkbox" />
       </div>
     </div>

@@ -20,7 +20,7 @@ const Pericias = (props) => {
         padding: 10,
       }}
     >
-      <span style={{}}>{props.name}</span>
+      <span className="ComboLabel-Label">{props.name}</span>
       <input onChange={trained} ref={input} type="checkbox" />
     </div>
   );

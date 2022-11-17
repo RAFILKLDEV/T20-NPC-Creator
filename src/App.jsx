@@ -138,7 +138,7 @@ function App() {
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />
           <Attribute pericias={pericias} setPericias={setPericias} nd={nd} />
-          <Combat extras={extras} />
+          <Combat nd={nd} extras={extras} />
         </div>
       </NpcContext.Provider>
     </div>
