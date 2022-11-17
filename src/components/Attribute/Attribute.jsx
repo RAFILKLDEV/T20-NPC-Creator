@@ -1,6 +1,7 @@
 import React from "react";
 import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
+import Mana from "../Mana/Mana";
 
 const Attribute = (props) => {
   return (
@@ -11,7 +12,7 @@ const Attribute = (props) => {
       </div>
       <div className="Npc-Attributes-Stats">
         <ComboLabel name="Hp" nd={props.nd} n={5} />
-        <ComboLabel name="Mana" nd={props.nd} n={5} />
+        <Mana name="Mana" nd={props.nd} n={5} />
         <ComboLabel name="CD" nd={props.nd} n={8} />
       </div>
       <ComboLabel name="Defesa" nd={props.nd} n={4} />

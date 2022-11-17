@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./App.css";
 import Attribute from "./components/Attribute/Attribute";
 import Combat from "./components/Combat/Combat";
+import Extras from "./components/Extras/Extras";
 import Image from "./components/Image/Image";
 import Info from "./components/Info/Info";
 import Pericias from "./components/Pericias/Pericias";
@@ -9,6 +10,7 @@ import NpcContext from "./contexts/npcContext";
 
 function App() {
   const [nd, setNd] = useState(0);
+  const [image, setImage] = useState("");
   const [pericias, setPericias] = useState([
     { name: "Acrobacia", trained: false },
     { name: "Adestramento", trained: false },
@@ -38,8 +40,13 @@ function App() {
     { name: "Sobrevivência", trained: false },
     { name: "Vontade", trained: false },
   ]);
-
-  const [image, setImage] = useState("");
+  const [extras, setExtras] = useState([
+    { name: "Mana", marked: false },
+    { name: "Corpo-a-Corpo", marked: true },
+    { name: "A Distancia", marked: false },
+    { name: "Habilidades", marked: false },
+    { name: "Equipamentos", marked: false },
+  ]);
 
   const tabPericias = useRef();
   const tabImageBox = useRef();
@@ -54,7 +61,7 @@ function App() {
             <button
               onClick={() => {
                 tabImageBox.current.style.display = "block";
-                tabImage.current.value = ""
+                tabImage.current.value = "";
               }}
             >
               Adicionar Foto
@@ -117,19 +124,21 @@ function App() {
           <div>
             <div className="Npc-Helper-Title">Extras</div>
           </div>
-          <div className="Npc-Helper-Extras">
-            <div>A Distancia</div>
-            <div>Magias</div>
-            <div>Habilidades</div>
-            <div>Equipamentos</div>
-          </div>
+          {extras.map((e) => (
+            <Extras
+              name={e.name}
+              key={e.name}
+              extras={extras}
+              setExtras={setExtras}
+            />
+          ))}
         </div>
 
         <div className="Npc-Creator">
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />
           <Attribute pericias={pericias} setPericias={setPericias} nd={nd} />
-          <Combat />
+          <Combat extras={extras} />
         </div>
       </NpcContext.Provider>
     </div>

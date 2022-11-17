@@ -1,8 +1,6 @@
 import React from "react";
 
 const Image = (props) => {
-  console.log(props.image);
-
   return props.image ? (
     <div className="Npc-Img">
       <img
