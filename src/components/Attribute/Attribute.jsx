@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
 import Mana from "../Mana/Mana";
+import Speed from "../Speed/Speed";
 
 const Attribute = (props) => {
+  const [deslocamento, setDeslocamento] = useState();
+
   return (
     <div className="Npc-Attributes">
       {/* 0 ND 1 ATK 2 NATK 3 DMG 4 DEF 5 HP 6 PERT 7 PER 8 CD */}
@@ -27,7 +30,7 @@ const Attribute = (props) => {
         }
         return "";
       })}
-      <div>Deslocamento, Tipo de Deslocamento</div>
+      <Speed nd={props.nd}/>
     </div>
   );
 };
