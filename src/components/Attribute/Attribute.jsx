@@ -12,7 +12,7 @@ const Attribute = (props) => {
       </div>
       <div className="Npc-Attributes-Stats">
         <ComboLabel name="Hp" nd={props.nd} n={5} />
-        <Mana name="Mana" nd={props.nd} n={5} />
+        <Mana name="Mana" nd={props.nd} n={5} extras={props.extras} />
         <ComboLabel name="CD" nd={props.nd} n={8} />
       </div>
       <ComboLabel name="Defesa" nd={props.nd} n={4} />

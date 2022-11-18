@@ -10,27 +10,21 @@ const Combat = (props) => {
       <span>
         <div className="ComboLabel-Label">{props.name}</div>
         <textarea
-          style={{
-            height: "22px",
-            width: "100%",
-            fontSize: "1.2rem",
-            backgroundColor: "inherit",
-            border: "inherit",
-            overflow: "hidden",
-            resize: "none",
-          }}
+          className="TextBox"
           onChange={() => {
             textBox.current.style.height = "22px";
             textBox.current.style.height = `${
               textBox.current.scrollHeight - 5
             }px`;
           }}
+          style={{
+            fontSize: 20,
+          }}
           ref={textBox}
           defaultValue={input}
           onBlur={(e) => setInput(e.target.value)}
           placeholder={props.placeholder}
         ></textarea>
-        <span className="textarea" role="textbox" contentEditable></span>
       </span>
     );
   };
@@ -41,10 +35,8 @@ const Combat = (props) => {
       <div>
         <div className="ComboLabel-Label">{props.name}</div>
         <input
-          style={{
-            width: "100%",
-          }}
-          type="text"
+          placeholder={props.placeholder}
+          className="TextBox"
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
@@ -68,9 +60,9 @@ const Combat = (props) => {
           if (e.name === "Mana") {
             return "";
           } else if (e.name === "Corpo-a-Corpo" || e.name === "A Distancia") {
-            return <InputAtk key={e.name} name={e.name} />;
+            return <InputAtk key={e.name} name={e.name} placeholder="..."/>;
           }
-          return <InputBox key={e.name} name={e.name} />;
+          return <InputBox key={e.name} name={e.name} placeholder="..." />;
         }
         return "";
       })}

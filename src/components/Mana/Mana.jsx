@@ -20,18 +20,16 @@ const Mana = (props) => {
     setValor(props.nd);
   }, [props.nd]);
 
-  return (
-    <div className="Mana">
-      <div className="ComboLabel">
-        <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
-        <div className="ComboLabel-Combo">
-          <button onClick={decrementar}>&lt;</button>
-          <span>{valor * 3}</span>
-          <button onClick={incrementar}>&gt;</button>
-        </div>
+  return props.extras[0].marked ? (
+    <div className="ComboLabel">
+      <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
+      <div className="ComboLabel-Combo">
+        <button onClick={decrementar}>&lt;</button>
+        <span>{valor * 3}</span>
+        <button onClick={incrementar}>&gt;</button>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Mana;

@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import "./App.css";
 import Attribute from "./components/Attribute/Attribute";
 import Combat from "./components/Combat/Combat";
 import Extras from "./components/Extras/Extras";
@@ -7,6 +6,7 @@ import Image from "./components/Image/Image";
 import Info from "./components/Info/Info";
 import Pericias from "./components/Pericias/Pericias";
 import NpcContext from "./contexts/npcContext";
+import "./App.css";
 
 function App() {
   const [nd, setNd] = useState(0);
@@ -137,7 +137,12 @@ function App() {
         <div className="Npc-Creator">
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />
-          <Attribute pericias={pericias} setPericias={setPericias} nd={nd} />
+          <Attribute
+            pericias={pericias}
+            setPericias={setPericias}
+            nd={nd}
+            extras={extras}
+          />
           <Combat nd={nd} extras={extras} />
         </div>
       </NpcContext.Provider>
