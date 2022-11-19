@@ -51,6 +51,7 @@ function App() {
   const tabPericias = useRef();
   const tabImageBox = useRef();
   const tabImage = useRef();
+  const NpcCreator = useRef();
 
   return (
     <div className="App">
@@ -132,9 +133,19 @@ function App() {
               setExtras={setExtras}
             />
           ))}
+          <div>
+            <div className="Npc-Helper-Title">PDF</div>
+            <button
+              onClick={() => {
+
+              }}
+            >
+              Criar PDF
+            </button>
+          </div>
         </div>
 
-        <div className="Npc-Creator">
+        <div className="Npc-Creator" id="NPC" ref={NpcCreator}>
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />
           <Attribute
