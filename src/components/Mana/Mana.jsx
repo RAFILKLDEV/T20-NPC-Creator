@@ -24,9 +24,13 @@ const Mana = (props) => {
     <div className="ComboLabel">
       <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
       <div className="ComboLabel-Combo">
-        <button onClick={decrementar}>&lt;</button>
+        <button onClick={decrementar}>
+          <i className="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
         <span>{valor * 3}</span>
-        <button onClick={incrementar}>&gt;</button>
+        <button onClick={incrementar}>
+          <i className="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   ) : null;
