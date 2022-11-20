@@ -135,13 +135,7 @@ function App() {
           ))}
           <div>
             <div className="Npc-Helper-Title">PDF</div>
-            <button
-              onClick={() => {
-
-              }}
-            >
-              Criar PDF
-            </button>
+            <button onClick={() => {}}>Criar PDF</button>
           </div>
         </div>
 

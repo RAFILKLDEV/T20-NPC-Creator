@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { tabela } from "../../constants";
 
-const ComboLabel = (props) => {
+const Damage = (props) => {
   const [valor, setValor] = useState(0);
 
   const incrementar = () => {
@@ -23,12 +23,19 @@ const ComboLabel = (props) => {
 
   return (
     <div className="ComboLabel">
-      <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
-      <div className="ComboLabel-Combo">
+      <div
+        className="ComboLabel-Combo"
+        style={{
+          display: "inline-flex",
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
         <button onClick={decrementar}>
           <i className="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <span>{tabela[valor][props.n]}</span>
+        <span className="ComboLabel-Label">Dano M. &nbsp;</span>
+        <span>{tabela[valor][3]}</span>
         <button onClick={incrementar}>
           <i className="fa fa-arrow-right" aria-hidden="true"></i>
         </button>
@@ -37,4 +44,4 @@ const ComboLabel = (props) => {
   );
 };
 
-export default ComboLabel;
+export default Damage;
