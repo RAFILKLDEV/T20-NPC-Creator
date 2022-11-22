@@ -131,6 +131,14 @@
   display: flex;
 }
 
+.ComboLabel input {
+  background-color: inherit;
+  border: none;
+  width: 22px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .ComboLabel-Label {
   color: var(--red);
   font-weight: 600;

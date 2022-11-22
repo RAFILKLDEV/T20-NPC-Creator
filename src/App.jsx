@@ -53,14 +53,6 @@ function App() {
   const tabPericias = useRef();
   const tabImageBox = useRef();
   const tabImage = useRef();
-  const NpcCreator = useRef();
-
-  const screenshotTarget = document.body;
-
-  html2canvas(screenshotTarget).then((canvas) => {
-    const base64image = canvas.toDataURL("image/png");
-    window.location.href = base64image;
-  });
 
   return (
     <div className="App">
@@ -149,7 +141,7 @@ function App() {
             />
           ))}
           <div>
-            <div className="Npc-Helper-Title">PDF</div>
+            <div className="Npc-Helper-Title">Criar Ficha</div>
             <button
               onClick={() => {
                 html2canvas(document.getElementById("NPC"), {
@@ -159,12 +151,12 @@ function App() {
                 });
               }}
             >
-              Criar PDF
+              Criar Png
             </button>
           </div>
         </div>
 
-        <div className="Npc-Creator" id="NPC" ref={NpcCreator}>
+        <div className="Npc-Creator" id="NPC">
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />
           <Attribute

@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from "react";
 import { tabela } from "../../constants";
 
 const ComboLabel = (props) => {
   const [valor, setValor] = useState(0);
+  const [input, setInput] = useState(0);
+  const [result, setResult] = useState("kek");
+  const inputRef = useRef();
 
   const incrementar = () => {
     if (valor === 20) {
@@ -18,7 +22,18 @@ const ComboLabel = (props) => {
   };
 
   useEffect(() => {
+    setResult(input);
+  }, [input]);
+
+  useEffect(() => {
+    inputRef.current.style.width = "22px";
+    inputRef.current.style.width = `1.${inputRef.current.value.length + 5}em`;
+    setResult(tabela[valor][props.n]);
+  }, [valor]);
+
+  useEffect(() => {
     setValor(props.nd);
+    setResult(tabela[valor][props.n]);
   }, [props.nd]);
 
   return (
@@ -28,7 +43,15 @@ const ComboLabel = (props) => {
         <button onClick={decrementar}>
           <i className="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <span>{tabela[valor][props.n]}</span>
+        <input
+          ref={inputRef}
+          onChange={(e) => {
+            inputRef.current.style.width = "22px";
+            inputRef.current.style.width = `${inputRef.current.scrollWidth}px`;
+            setInput(e.target.value);
+          }}
+          value={result}
+        ></input>
         <button onClick={incrementar}>
           <i className="fa fa-arrow-right" aria-hidden="true"></i>
         </button>
