@@ -2,6 +2,7 @@ import React from "react";
 import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
 import Mana from "../Mana/Mana";
+import Skill from "../Skill/Skill";
 import Speed from "../Speed/Speed";
 
 const Attribute = (props) => {
@@ -45,7 +46,12 @@ const Attribute = (props) => {
       </div>
       <div className="Npc-Attributes-Resistencias">
         <div className="ComboLabel-Label">
-          Pericias +{tabela[props.nd][6]}/+{tabela[props.nd][7]}
+          <Skill
+            nd={props.nd}
+            name="Pericias"
+            pericias={props.pericias}
+            setPericias={props.setPericias}
+          />
         </div>
         {/*Pericias */}
         {props.pericias.map((e) => {
@@ -60,7 +66,7 @@ const Attribute = (props) => {
             return (
               <div key={e.name}>
                 <span className="ComboLabel-Label">{e.name} :&nbsp;</span>
-                <span>{tabela[props?.nd][6]}</span>
+                <span>{tabela[props.pericias[0].total][6]}</span>
               </div>
             );
           }

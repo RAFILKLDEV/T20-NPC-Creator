@@ -6,12 +6,14 @@ import Image from "./components/Image/Image";
 import Info from "./components/Info/Info";
 import Pericias from "./components/Pericias/Pericias";
 import NpcContext from "./contexts/npcContext";
+import html2canvas from "html2canvas";
 import "./App.css";
 
 function App() {
   const [nd, setNd] = useState(0);
   const [image, setImage] = useState("");
   const [pericias, setPericias] = useState([
+    { name: null, total: 4 },
     { name: "Acrobacia", trained: false },
     { name: "Adestramento", trained: false },
     { name: "Atuação", trained: false },
@@ -52,6 +54,13 @@ function App() {
   const tabImageBox = useRef();
   const tabImage = useRef();
   const NpcCreator = useRef();
+
+  const screenshotTarget = document.body;
+
+  html2canvas(screenshotTarget).then((canvas) => {
+    const base64image = canvas.toDataURL("image/png");
+    window.location.href = base64image;
+  });
 
   return (
     <div className="App">
@@ -111,14 +120,20 @@ function App() {
                 Fechar
               </button>
               <div className="Npc-Helper-List">
-                {pericias.map((e) => (
-                  <Pericias
-                    name={e.name}
-                    pericias={pericias}
-                    key={e.name}
-                    setPericias={setPericias}
-                  />
-                ))}
+                {pericias.map((e) => {
+                  if (e.name === null) {
+                    return null;
+                  } else {
+                    return (
+                      <Pericias
+                        name={e.name}
+                        pericias={pericias}
+                        key={e.name}
+                        setPericias={setPericias}
+                      />
+                    );
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -135,7 +150,17 @@ function App() {
           ))}
           <div>
             <div className="Npc-Helper-Title">PDF</div>
-            <button onClick={() => {}}>Criar PDF</button>
+            <button
+              onClick={() => {
+                html2canvas(document.getElementById("NPC"), {
+                  allowTaint: true,
+                }).then(function (canvas) {
+                  document.body.appendChild(canvas);
+                });
+              }}
+            >
+              Criar PDF
+            </button>
           </div>
         </div>
 

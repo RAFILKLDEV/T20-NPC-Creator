@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   background-image: url(https://img.freepik.com/free-photo/white-texture_1160-786.jpg?w=2000);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
   gap: 100px;
 }
 
@@ -16,6 +16,9 @@
   border: var(--red) solid 3px;
   padding: 20px;
   font-size: 1.2rem;
+  background-image: url(https://img.freepik.com/free-photo/white-texture_1160-786.jpg?w=2000);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Npc-Helper {
