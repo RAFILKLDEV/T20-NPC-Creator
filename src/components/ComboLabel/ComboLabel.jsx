@@ -26,7 +26,7 @@ const ComboLabel = (props) => {
   }, [input]);
 
   useEffect(() => {
-    inputRef.current.style.width = "22px";
+    inputRef.current.style.width = "20px";
     inputRef.current.style.width = `1.${inputRef.current.value.length + 5}em`;
     setResult(tabela[valor][props.n]);
   }, [valor]);

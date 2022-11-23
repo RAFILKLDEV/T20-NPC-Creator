@@ -148,6 +148,7 @@ function App() {
                   allowTaint: true,
                 }).then(function (canvas) {
                   document.body.appendChild(canvas);
+                  window.open("", canvas);
                 });
               }}
             >
