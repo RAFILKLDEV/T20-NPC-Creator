@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Mana = (props) => {
   const [valor, setValor] = useState(0);
+  const [input, setInput] = useState(0);
+  const inputRef = useRef();
 
   const incrementar = () => {
     if (valor === 20) {
@@ -17,6 +19,10 @@ const Mana = (props) => {
   };
 
   useEffect(() => {
+    setInput(valor * 3);
+  }, [valor]);
+
+  useEffect(() => {
     setValor(props.nd);
   }, [props.nd]);
 
@@ -27,7 +33,16 @@ const Mana = (props) => {
         <button onClick={decrementar}>
           <i className="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <span>{valor * 3}</span>
+        <input
+          ref={inputRef}
+          type="number"
+          onChange={(e) => {
+            inputRef.current.style.width = "22px";
+            inputRef.current.style.width = `${inputRef.current.scrollWidth}px`;
+            setInput(e.target.value);
+          }}
+          value={input}
+        ></input>
         <button onClick={incrementar}>
           <i className="fa fa-arrow-right" aria-hidden="true"></i>
         </button>

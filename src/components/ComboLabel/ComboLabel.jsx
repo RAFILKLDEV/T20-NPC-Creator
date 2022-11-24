@@ -45,6 +45,7 @@ const ComboLabel = (props) => {
         </button>
         <input
           ref={inputRef}
+          type="number"
           onChange={(e) => {
             inputRef.current.style.width = "22px";
             inputRef.current.style.width = `${inputRef.current.scrollWidth}px`;

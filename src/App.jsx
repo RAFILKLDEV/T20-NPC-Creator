@@ -147,8 +147,8 @@ function App() {
                 html2canvas(document.getElementById("NPC"), {
                   allowTaint: true,
                 }).then(function (canvas) {
-                  document.body.appendChild(canvas);
-                  window.open("", canvas);
+                  let html = window.open("", "Imagem de Ficha");
+                  html.document.body.appendChild(canvas);
                 });
               }}
             >
