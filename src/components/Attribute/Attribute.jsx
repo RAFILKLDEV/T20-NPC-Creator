@@ -2,6 +2,7 @@ import React from "react";
 import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
 import Mana from "../Mana/Mana";
+import SavingThrows from "../SavingThrows/SavingThrows";
 import Skill from "../Skill/Skill";
 import Speed from "../Speed/Speed";
 
@@ -22,26 +23,7 @@ const Attribute = (props) => {
           <ComboLabel name="CD" nd={props.nd} n={8} />
         </div>
         <ComboLabel name="Defesa" nd={props.nd} n={4} />
-        <div>
-          {/*Resistencias */}
-          {props.pericias.map((e) => {
-            if (
-              e.name === "Fortitude" ||
-              e.name === "Reflexos" ||
-              e.name === "Vontade"
-            ) {
-              if (e.trained) {
-                return (
-                  <span key={e.name} style={{}}>
-                    <span className="ComboLabel-Label"> {e.name} :&nbsp;</span>
-                    <span>{tabela[props?.nd][6]}</span>
-                  </span>
-                );
-              }
-            }
-            return null;
-          })}
-        </div>
+        <SavingThrows pericias={props.pericias} nd={props.nd} />
         <Speed nd={props.nd} />
       </div>
       <div className="Npc-Attributes-Resistencias">

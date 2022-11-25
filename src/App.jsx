@@ -13,7 +13,7 @@ function App() {
   const [nd, setNd] = useState(0);
   const [image, setImage] = useState("");
   const [pericias, setPericias] = useState([
-    { name: null, total: 4 },
+    { name: null, total: 4, total2: 0 },
     { name: "Acrobacia", trained: false },
     { name: "Adestramento", trained: false },
     { name: "Atuação", trained: false },
