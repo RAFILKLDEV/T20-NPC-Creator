@@ -4,6 +4,7 @@ import ComboLabel from "../ComboLabel/ComboLabel";
 import Mana from "../Mana/Mana";
 import SavingThrows from "../SavingThrows/SavingThrows";
 import Skill from "../Skill/Skill";
+import SkillTrained from "../SkillTrained/SkillTrained";
 import Speed from "../Speed/Speed";
 
 const Attribute = (props) => {
@@ -49,6 +50,7 @@ const Attribute = (props) => {
               <div key={e.name}>
                 <span className="ComboLabel-Label">{e.name} :&nbsp;</span>
                 <span>{tabela[props.pericias[0].total][6]}</span>
+                <SkillTrained name={e.name} key={e.name} pericias={props.pericias} />
               </div>
             );
           }

@@ -12,7 +12,6 @@ const SavingThrows = (props) => {
         if (e.name === props.name) {
           if (e.trained) {
             setResult(tabela[props.pericias[0].total][6]);
-            console.log("troquei");
           } else {
             setResult(tabela[props.pericias[0].total][7]);
           }
@@ -45,8 +44,10 @@ const SavingThrows = (props) => {
 
   return (
     <div>
-      <SavingThrow name="Fortitude" nd={props.nd} pericias={props.pericias} />&nbsp;
-      <SavingThrow name="Reflexos" nd={props.nd} pericias={props.pericias} />&nbsp;
+      <SavingThrow name="Fortitude" nd={props.nd} pericias={props.pericias} />
+      &nbsp;
+      <SavingThrow name="Reflexos" nd={props.nd} pericias={props.pericias} />
+      &nbsp;
       <SavingThrow name="Vontade" nd={props.nd} pericias={props.pericias} />
       {/*Resistencias */}
     </div>
