@@ -1,5 +1,4 @@
 import React from "react";
-import { tabela } from "../../constants";
 import ComboLabel from "../ComboLabel/ComboLabel";
 import Mana from "../Mana/Mana";
 import SavingThrows from "../SavingThrows/SavingThrows";
@@ -44,17 +43,15 @@ const Attribute = (props) => {
               e.name === "Reflexos" ||
               e.name === "Vontade"
             ) {
-              return "";
+              return null;
             }
             return (
               <div key={e.name}>
-                <span className="ComboLabel-Label">{e.name} :&nbsp;</span>
-                <span>{tabela[props.pericias[0].total][6]}</span>
                 <SkillTrained name={e.name} key={e.name} pericias={props.pericias} />
               </div>
             );
           }
-          return "";
+          return null;
         })}
       </div>
     </div>
