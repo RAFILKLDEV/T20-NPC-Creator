@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Extras = (props) => {
+  const [input, setInput] = useState(1);
   const inputCheckBox = useRef();
 
   const marked = () => {
@@ -26,7 +27,13 @@ const Extras = (props) => {
         }}
       >
         <span className="ComboLabel-Label">{props.name}</span>
-        <input onChange={marked} ref={inputCheckBox} checked={checked()} type="checkbox" />
+        {props.number && <input value={input} />}
+        <input
+          onChange={marked}
+          ref={inputCheckBox}
+          checked={checked()}
+          type="checkbox"
+        />
       </div>
     </div>
   );

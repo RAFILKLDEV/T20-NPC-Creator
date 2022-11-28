@@ -1,15 +1,22 @@
 import React, { useRef, useState } from "react";
 import Attack from "../Attack/Attack.jsx";
+import ComoboCheck from "../ComboCheck.jsx/ComboCheck.jsx";
 import Damage from "../Damage/Damage.jsx";
 
 const Combat = (props) => {
   const InputBox = (props) => {
     const [input, setInput] = useState("");
+    const [name, setName] = useState("");
     const textBox = useRef();
 
     return (
       <span>
         <div className="ComboLabel-Label">{props.name}</div>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Nome..."
+        />
         <textarea
           className="TextBox"
           onChange={() => {
@@ -41,13 +48,20 @@ const Combat = (props) => {
       {props.extras.map((e) => {
         if (e.marked) {
           if (e.name === "Mana") {
-            return "";
+            return null;
           } else if (e.name === "Corpo-a-Corpo" || e.name === "A Distancia") {
             return <InputBox key={e.name} name={e.name} placeholder="..." />;
-          }
-          return <InputBox key={e.name} name={e.name} placeholder="..." />;
+          } else
+            return (
+              <InputBox
+                key={e.name}
+                name={e.name}
+                nd={props.nd}
+                placeholder="..."
+              />
+            );
         }
-        return "";
+        return null;
       })}
     </div>
   );

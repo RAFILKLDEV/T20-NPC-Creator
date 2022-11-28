@@ -43,11 +43,11 @@ function App() {
     { name: "Vontade", trained: false },
   ]);
   const [extras, setExtras] = useState([
-    { name: "Mana", marked: false },
-    { name: "Corpo-a-Corpo", marked: true },
-    { name: "A Distancia", marked: false },
-    { name: "Habilidades", marked: false },
-    { name: "Equipamentos", marked: false },
+    { name: "Mana", marked: false, number: null },
+    { name: "Corpo-a-Corpo", marked: true, number: 1 },
+    { name: "A Distancia", marked: false, number: 1 },
+    { name: "Habilidades", marked: false, number: 1 },
+    { name: "Equipamentos", marked: false, number: null },
   ]);
 
   const tabPericias = useRef();
@@ -250,6 +250,7 @@ function App() {
               key={e.name}
               extras={extras}
               setExtras={setExtras}
+              number={e.number}
             />
           ))}
           <div>
