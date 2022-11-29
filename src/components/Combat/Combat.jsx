@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import Attack from "../Attack/Attack.jsx";
-import ComoboCheck from "../ComboCheck.jsx/ComboCheck.jsx";
 import Damage from "../Damage/Damage.jsx";
 
 const Combat = (props) => {
@@ -11,8 +10,13 @@ const Combat = (props) => {
 
     return (
       <span>
-        <div className="ComboLabel-Label">{props.name}</div>
         <input
+          style={{
+            border: "none",
+            backgroundColor: "inherit",
+            fontWeight: 600,
+            fontSize: 18,
+          }}
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Nome..."
@@ -45,12 +49,27 @@ const Combat = (props) => {
         <Attack nd={props.nd} />
         <Damage nd={props.nd} />
       </div>
-      {props.extras.map((e) => {
+      {props.extras.map((e, i) => {
         if (e.marked) {
           if (e.name === "Mana") {
             return null;
-          } else if (e.name === "Corpo-a-Corpo" || e.name === "A Distancia") {
-            return <InputBox key={e.name} name={e.name} placeholder="..." />;
+          } else if (
+            e.name === "Corpo-a-Corpo" ||
+            e.name === "A Distancia" ||
+            e.name === "Habilidades"
+          ) {
+            return Array(props.extras[i].number)
+              .fill()
+              .map((_, index) => (
+                <div>
+                  <div className="ComboLabel-Label">{e.name}</div>
+                  <InputBox
+                    key={e.name + index}
+                    name={e.name}
+                    placeholder="..."
+                  />
+                </div>
+              ));
           } else
             return (
               <InputBox

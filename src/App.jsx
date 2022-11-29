@@ -7,6 +7,7 @@ import Info from "./components/Info/Info";
 import Pericias from "./components/Pericias/Pericias";
 import NpcContext from "./contexts/npcContext";
 import html2canvas from "html2canvas";
+import ComoboCheck from "./components/ComboCheck.jsx/ComboCheck";
 import "./App.css";
 
 function App() {
@@ -44,9 +45,9 @@ function App() {
   ]);
   const [extras, setExtras] = useState([
     { name: "Mana", marked: false, number: null },
-    { name: "Corpo-a-Corpo", marked: true, number: 1 },
-    { name: "A Distancia", marked: false, number: 1 },
-    { name: "Habilidades", marked: false, number: 1 },
+    { name: "Corpo-a-Corpo", marked: true, number: null },
+    { name: "A Distancia", marked: false, number: null },
+    { name: "Habilidades", marked: false, number: null },
     { name: "Equipamentos", marked: false, number: null },
   ]);
 
@@ -90,10 +91,10 @@ function App() {
         </div>
         <div className="Tutorial" ref={tabTutorial}>
           <div className="Guide">
-            <li>
+            <h2>
               As regras de criação são baseadas na tabela do{" "}
               <b>Tormenta 20: Jogo do Ano!</b>
-            </li>
+            </h2>
             <ul>
               <b>Ordem para criação do NPC:</b>
               <li>
@@ -106,7 +107,7 @@ function App() {
                 Preencha <b>Nome</b> e outros campos opcionais como{" "}
                 <b>Imagem</b>, <b>Mana</b> etc.
               </li>
-              <li>
+              <ul>
                 Alterando Estatisticas:
                 <ul>
                   <b>Passar o Mouse</b> dentro de um campo aparece formas de
@@ -124,8 +125,8 @@ function App() {
                     o NPC.
                   </li>
                 </ul>
-              </li>
-              <li>
+              </ul>
+              <ul>
                 {" "}
                 Dicas:
                 <ul>
@@ -137,16 +138,16 @@ function App() {
                     de <b>Estatisticas</b>.
                   </li>
                 </ul>
-                <li>
+                <ul>
                   Quando terminar clique em <b>Criar Png</b> isso gera uma
                   imagem em formato de ficha.
-                </li>
-              </li>
+                </ul>
+              </ul>
             </ul>
-            <li>
+            <h5>
               Ao gerar a imagem em uma nova janela basta clicar com o botão
               direto e selecionar <b>Salvar Imagem como...</b>
-            </li>
+            </h5>
             <button
               onClick={() => {
                 tabTutorial.current.style.display = "none";
@@ -244,15 +245,18 @@ function App() {
           <div>
             <div className="Npc-Helper-Title">Extras</div>
           </div>
-          {extras.map((e) => (
+          {extras.map((e, i) => (
             <Extras
               name={e.name}
               key={e.name}
               extras={extras}
               setExtras={setExtras}
               number={e.number}
+              checked={e.marked}
+              index={i}
             />
           ))}
+
           <div>
             <div className="Npc-Helper-Title">Criar Ficha</div>
             <button
@@ -269,7 +273,6 @@ function App() {
             </button>
           </div>
         </div>
-
         <div className="Npc-Creator" id="NPC">
           <Info nd={nd} setNd={setNd} />
           <Image image={image} />

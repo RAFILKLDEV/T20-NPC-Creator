@@ -1,8 +1,22 @@
-import React, { useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from "react";
 
 const Extras = (props) => {
-  const [input, setInput] = useState(1);
+  const [valor, setValor] = useState(1);
   const inputCheckBox = useRef();
+
+  const incrementar = () => {
+    if (valor === 20) {
+      return;
+    }
+    setValor(valor + 1);
+  };
+  const decrementar = () => {
+    if (valor === 1) {
+      return;
+    }
+    setValor(valor - 1);
+  };
 
   const marked = () => {
     const values = [...props.extras];
@@ -18,6 +32,12 @@ const Extras = (props) => {
       .marked;
   };
 
+  useEffect(() => {
+    const values = [...props.extras];
+    values[props.index].number = valor;
+    props.setExtras(values)
+  }, [valor]);
+
   return (
     <div className="Npc-Helper-Extras">
       <div
@@ -27,7 +47,21 @@ const Extras = (props) => {
         }}
       >
         <span className="ComboLabel-Label">{props.name}</span>
-        {props.number && <input value={input} />}
+        {props.checked && (
+          <div className="ComboLabel">
+            <div className="ComboLabel-Combo">
+              <button onClick={decrementar}>
+                <i className="fa fa-arrow-left" aria-hidden="true"></i>
+              </button>
+              <span>
+                {props.number && <input value={valor} onChange={setValor} />}
+              </span>
+              <button onClick={incrementar}>
+                <i className="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        )}
         <input
           onChange={marked}
           ref={inputCheckBox}
