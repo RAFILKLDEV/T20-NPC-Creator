@@ -9,13 +9,14 @@ const Combat = (props) => {
     const textBox = useRef();
 
     return (
-      <span>
+      <div>
         <input
           style={{
             border: "none",
             backgroundColor: "inherit",
             fontWeight: 600,
             fontSize: 18,
+            width: "100%",
           }}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -34,7 +35,7 @@ const Combat = (props) => {
           onBlur={(e) => setInput(e.target.value)}
           placeholder={props.placeholder}
         ></textarea>
-      </span>
+      </div>
     );
   };
 
@@ -58,26 +59,31 @@ const Combat = (props) => {
             e.name === "A Distancia" ||
             e.name === "Habilidades"
           ) {
-            return Array(props.extras[i].number)
-              .fill()
-              .map((_, index) => (
-                <div>
-                  <div className="ComboLabel-Label">{e.name}</div>
-                  <InputBox
-                    key={e.name + index}
-                    name={e.name}
-                    placeholder="..."
-                  />
-                </div>
-              ));
+            return (
+              <div key={e.name}>
+                <div className="ComboLabel-Label">{e.name}</div>
+                {Array(props.extras[i].number)
+                  .fill()
+                  .map((_, index) => (
+                    <InputBox
+                      key={e.name + index}
+                      name={e.name}
+                      placeholder="..."
+                    />
+                  ))}
+              </div>
+            );
           } else
             return (
-              <InputBox
-                key={e.name}
-                name={e.name}
-                nd={props.nd}
-                placeholder="..."
-              />
+              <div>
+                <div className="ComboLabel-Label">{e.name}</div>
+                <InputBox
+                  key={e.name}
+                  name={e.name}
+                  nd={props.nd}
+                  placeholder="..."
+                />
+              </div>
             );
         }
         return null;

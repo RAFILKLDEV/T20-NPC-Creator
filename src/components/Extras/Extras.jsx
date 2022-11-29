@@ -34,8 +34,14 @@ const Extras = (props) => {
 
   useEffect(() => {
     const values = [...props.extras];
-    values[props.index].number = valor;
-    props.setExtras(values)
+    if (
+      props.name === "Corpo-a-Corpo" ||
+      props.name === "A Distancia" ||
+      props.name === "Habilidades"
+    ) {
+      values[props.index].number = valor;
+      props.setExtras(values);
+    }
   }, [valor]);
 
   return (
@@ -47,7 +53,7 @@ const Extras = (props) => {
         }}
       >
         <span className="ComboLabel-Label">{props.name}</span>
-        {props.checked && (
+        {props.checked && props.number >= 1 && (
           <div className="ComboLabel">
             <div className="ComboLabel-Combo">
               <button onClick={decrementar}>
