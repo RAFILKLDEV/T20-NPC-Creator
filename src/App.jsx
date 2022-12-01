@@ -7,7 +7,6 @@ import Info from "./components/Info/Info";
 import Pericias from "./components/Pericias/Pericias";
 import NpcContext from "./contexts/npcContext";
 import html2canvas from "html2canvas";
-import ComoboCheck from "./components/ComboCheck.jsx/ComboCheck";
 import "./App.css";
 
 function App() {

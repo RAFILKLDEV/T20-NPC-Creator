@@ -1,44 +1,26 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import Attack from "../Attack/Attack.jsx";
 import Damage from "../Damage/Damage.jsx";
+import InputBox from "../InputBox/InputBox.jsx";
 
 const Combat = (props) => {
-  const InputBox = (props) => {
-    const [input, setInput] = useState("");
-    const [name, setName] = useState("");
-    const textBox = useRef();
-
+  const renderInputBox = (n) => {
     return (
       <div>
-        <input
-          style={{
-            border: "none",
-            backgroundColor: "inherit",
-            fontWeight: 600,
-            fontSize: 18,
-            width: "100%",
-          }}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Nome..."
-        />
-        <textarea
-          className="TextBox"
-          onChange={() => {
-            textBox.current.style.height = "22px";
-            textBox.current.style.height = `${
-              textBox.current.scrollHeight - 13
-            }px`;
-          }}
-          ref={textBox}
-          defaultValue={input}
-          onBlur={(e) => setInput(e.target.value)}
-          placeholder={props.placeholder}
-        ></textarea>
+        <div className="ComboLabel-Label">{props.extras[n].name}</div>
+
+        {Array(props.extras[n].number)
+          .fill()
+          .map((_, index) => (
+            <InputBox
+              key={props.extras[n].name + index}
+              name={props.extras[n].name}
+              placeholder="..."
+            />
+          ))}
       </div>
     );
   };
-
   return (
     <div className="Npc-Combat">
       {/* 0 ND 1 ATK 2 NATK 3 DMG 4 DEF 5 HP 6 PERT 7 PER 8 CD */}
@@ -50,44 +32,13 @@ const Combat = (props) => {
         <Attack nd={props.nd} />
         <Damage nd={props.nd} />
       </div>
-      {props.extras.map((e, i) => {
-        if (e.marked) {
-          if (e.name === "Mana") {
-            return null;
-          } else if (
-            e.name === "Corpo-a-Corpo" ||
-            e.name === "A Distancia" ||
-            e.name === "Habilidades"
-          ) {
-            return (
-              <div key={e.name}>
-                <div className="ComboLabel-Label">{e.name}</div>
-                {Array(props.extras[i].number)
-                  .fill()
-                  .map((_, index) => (
-                    <InputBox
-                      key={e.name + index}
-                      name={e.name}
-                      placeholder="..."
-                    />
-                  ))}
-              </div>
-            );
-          } else
-            return (
-              <div>
-                <div className="ComboLabel-Label">{e.name}</div>
-                <InputBox
-                  key={e.name}
-                  name={e.name}
-                  nd={props.nd}
-                  placeholder="..."
-                />
-              </div>
-            );
-        }
-        return null;
-      })}
+      <div>
+        {props.extras[1].marked && renderInputBox(1)}
+        {props.extras[2].marked && renderInputBox(2, "Corpo-a-Corpo")}
+        {props.extras[3].marked && renderInputBox(3)}
+        {props.extras[4].marked && renderInputBox(4)}
+      </div>
+      {}
     </div>
   );
 };
