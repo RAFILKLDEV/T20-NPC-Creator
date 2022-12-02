@@ -43,6 +43,8 @@ function App() {
     { name: "Vontade", trained: false },
   ]);
   const [extras, setExtras] = useState([
+    { name: "Atributos", marked: false, number: null },
+    { name: "CD", marked: false, number: null },
     { name: "Mana", marked: false, number: null },
     { name: "Corpo-a-Corpo", marked: true, number: null },
     { name: "A Distancia", marked: false, number: null },

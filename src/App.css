@@ -118,6 +118,12 @@
   padding: 10px 0px 0px;
 }
 
+.Npc-Attributes-Stats {
+  border-bottom: var(--red) solid 2px;
+  padding: 10px 0px 10px;
+  display: flex;
+}
+
 .Npc-Attributes-Resistencias {
   border-bottom: var(--red) solid 2px;
   padding: 10px 0px 10px;

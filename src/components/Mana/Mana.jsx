@@ -26,7 +26,7 @@ const Mana = (props) => {
     setValor(props.nd);
   }, [props.nd]);
 
-  return props.extras[0].marked ? (
+  return (
     <div className="ComboLabel">
       <span className="ComboLabel-Label">{props.name} :&nbsp;</span>
       <div className="ComboLabel-Combo">
@@ -48,7 +48,7 @@ const Mana = (props) => {
         </button>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default Mana;

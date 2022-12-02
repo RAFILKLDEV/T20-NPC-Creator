@@ -26,16 +26,17 @@ const Combat = (props) => {
       <div
         style={{
           display: "inline-flex",
+          borderBottom: "var(--red) solid 2px;",
         }}
       >
         <Attack nd={props.nd} />
         <Damage nd={props.nd} />
       </div>
       <div>
-        {props.extras[1].marked && renderInputBox(1)}
-        {props.extras[2].marked && renderInputBox(2)}
         {props.extras[3].marked && renderInputBox(3)}
         {props.extras[4].marked && renderInputBox(4)}
+        {props.extras[5].marked && renderInputBox(5)}
+        {props.extras[6].marked && renderInputBox(6)}
       </div>
       {}
     </div>

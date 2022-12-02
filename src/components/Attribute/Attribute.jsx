@@ -5,6 +5,7 @@ import SavingThrows from "../SavingThrows/SavingThrows";
 import Skill from "../Skill/Skill";
 import SkillTrained from "../SkillTrained/SkillTrained";
 import Speed from "../Speed/Speed";
+import Stats from "../Stats/Stats";
 
 const Attribute = (props) => {
   return (
@@ -18,14 +19,23 @@ const Attribute = (props) => {
         >
           <ComboLabel name="Hp" nd={props.nd} n={5} />
           &nbsp;
-          <Mana name="Mana" nd={props.nd} n={5} extras={props.extras} />
+          {props.extras[2].marked && (
+            <Mana name="Mana" nd={props.nd} n={5} extras={props.extras} />
+          )}
           &nbsp;
-          <ComboLabel name="CD" nd={props.nd} n={8} />
+          {props.extras[1].marked && (
+            <ComboLabel name="CD" nd={props.nd} n={8} />
+          )}
         </div>
         <ComboLabel name="Defesa" nd={props.nd} n={4} />
         <SavingThrows pericias={props.pericias} nd={props.nd} />
         <Speed nd={props.nd} />
       </div>
+      {props.extras[0].marked && (
+        <div className="Npc-Attributes-Stats">
+          <Stats />
+        </div>
+      )}
       <div className="Npc-Attributes-Resistencias">
         <div className="ComboLabel-Label">
           <Skill
@@ -47,7 +57,11 @@ const Attribute = (props) => {
             }
             return (
               <div key={e.name}>
-                <SkillTrained name={e.name} key={e.name} pericias={props.pericias} />
+                <SkillTrained
+                  name={e.name}
+                  key={e.name}
+                  pericias={props.pericias}
+                />
               </div>
             );
           }
