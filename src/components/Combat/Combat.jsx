@@ -8,7 +8,6 @@ const Combat = (props) => {
     return (
       <div>
         <div className="ComboLabel-Label">{props.extras[n].name}</div>
-
         {Array(props.extras[n].number)
           .fill()
           .map((_, index) => (
@@ -34,7 +33,7 @@ const Combat = (props) => {
       </div>
       <div>
         {props.extras[1].marked && renderInputBox(1)}
-        {props.extras[2].marked && renderInputBox(2, "Corpo-a-Corpo")}
+        {props.extras[2].marked && renderInputBox(2)}
         {props.extras[3].marked && renderInputBox(3)}
         {props.extras[4].marked && renderInputBox(4)}
       </div>
